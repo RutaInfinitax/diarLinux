@@ -1,0 +1,41 @@
+.app {
+  display: flex;
+  height: 100%;
+}
+.principal {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--fondo);
+  position: relative;
+}
+.contenido {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+.encabezado-mes {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--encabezado);
+  padding: 16px 0 10px;
+}
+
+/* Listas (Línea de tiempo, Buscar, Etiquetas, En este día): letra y ancho a elección del usuario
+   (deslizadores de la barra lateral). El calendario no cambia. zoom agranda todo parejo (texto,
+   días, chips, miniaturas); el ancho máximo se divide por el zoom para que sea en px de pantalla. */
+.contenido:not(.cal-scroll)
+  :is(.tarjeta, .encabezado-mes, .eti-fila, .eti-detalle, .bus-cantidad, .eti-vacio) {
+  zoom: var(--lista-zoom, 1);
+}
+.contenido:not(.cal-scroll) :is(.tarjeta, .encabezado-mes, .eti-fila, .eti-detalle, .bus-cantidad) {
+  /* width: dentro de listas flex, los márgenes automáticos sin esto encogían las filas */
+  width: 100%;
+  box-sizing: border-box;
+  max-width: calc(var(--lista-ancho, none) / var(--lista-zoom, 1));
+  margin-left: auto;
+  margin-right: auto;
+}

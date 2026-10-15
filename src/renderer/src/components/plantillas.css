@@ -1,0 +1,128 @@
+.pl-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  background: var(--velo);
+}
+.pl-ventana {
+  width: min(760px, calc(100vw - 40px));
+  height: min(520px, calc(100vh - 60px));
+  display: flex;
+  flex-direction: column;
+  background: var(--superficie-2);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 10px;
+  box-shadow: 0 20px 60px var(--sombra);
+  overflow: hidden;
+  font-size: 13.5px;
+}
+.pl-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--linea);
+  font-weight: 600;
+  color: var(--texto-fuerte);
+}
+.pl-cuerpo {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 190px 1fr;
+}
+.pl-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  overflow: auto;
+  border-right: 1px solid var(--linea);
+}
+.pl-lista button {
+  text-align: left;
+  padding: 6px 8px;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: var(--texto);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pl-lista button:hover {
+  background: var(--hover-suave);
+}
+.pl-lista button.sel {
+  background: var(--sel);
+  color: var(--acento-claro);
+}
+.pl-lista .pl-nueva {
+  font-style: italic;
+}
+.pl-lista .pl-agregar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  color: var(--texto-suave);
+}
+.pl-vacia {
+  padding: 6px 8px;
+  color: var(--texto-suave);
+  font-size: 12.5px;
+}
+.pl-edicion {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+.pl-nombre {
+  margin: 10px 12px 8px;
+  height: 28px;
+  padding: 0 8px;
+  background: var(--campo);
+  border: 1px solid var(--campo-borde);
+  border-radius: 5px;
+  outline: none;
+  color: var(--texto);
+  font-weight: 600;
+}
+.pl-nombre:focus {
+  border-color: var(--acento-claro);
+}
+/* la barra de formato es la misma del editor: va sobre el color de acento */
+.pl-edicion .ed-herramientas {
+  margin: 0 12px;
+  padding-top: 3px;
+  border-radius: 6px 6px 0 0;
+  background: var(--acento);
+}
+.pl-texto {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  margin: 0 12px;
+  padding: 10px 12px;
+  background: var(--campo);
+  border: 1px solid var(--campo-borde);
+  border-top: 0;
+  border-radius: 0 0 6px 6px;
+  cursor: text;
+}
+.pl-texto .pl-doc {
+  min-height: 100%;
+}
+.pl-acciones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px 10px;
+}
+.pl-acciones .aj-nota {
+  flex: 1;
+}

@@ -1,0 +1,58 @@
+.dlg-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: var(--velo);
+}
+.dlg-ventana {
+  width: min(440px, calc(100vw - 40px));
+  padding: 18px 20px 16px;
+  background: var(--superficie-2);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 10px;
+  box-shadow: 0 20px 60px var(--sombra);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.dlg-texto {
+  margin: 0 0 12px;
+  white-space: pre-line;
+}
+.dlg-campo {
+  width: 100%;
+  height: 30px;
+  padding: 0 8px;
+  margin-bottom: 4px;
+  background: var(--control);
+  border: 1px solid var(--control-borde);
+  border-radius: 5px;
+  color: var(--control-texto);
+}
+.dlg-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+.dlg-botones button {
+  height: 28px;
+  padding: 0 14px;
+  background: var(--control);
+  border: 1px solid var(--control-borde);
+  border-radius: 5px;
+  color: var(--control-texto);
+}
+.dlg-botones button:hover {
+  background: var(--control-hover);
+}
+.dlg-botones button.primario {
+  background: var(--chip);
+  border-color: color-mix(in srgb, var(--chip) 80%, #fff);
+}
+.dlg-botones button.peligro {
+  background: var(--peligro);
+  border-color: var(--peligro);
+  color: #fff;
+}

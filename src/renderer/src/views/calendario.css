@@ -1,0 +1,270 @@
+.cal-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: 0 0 3px;
+  font-size: 12.5px;
+  color: color-mix(in srgb, var(--acento-texto) 85%, transparent);
+  text-align: center;
+}
+.cal-mes {
+  padding: 0 0 6px;
+}
+.cal-mes .encabezado-mes {
+  background: var(--fondo);
+  border-bottom: 1px solid var(--linea-suave);
+  margin-bottom: 4px;
+  padding: 12px 0 9px;
+}
+.cal-grilla {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: 0;
+}
+.cal-dia {
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  background: var(--celda);
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: var(--texto);
+  font-size: 19px;
+  font-weight: 400;
+  padding: 0;
+  position: relative;
+}
+.cal-dia.vacio {
+  background: var(--celda-vacia);
+  cursor: default;
+}
+.cal-dia:not(.vacio):hover {
+  border-color: var(--celda-borde-hover);
+}
+.cal-dia.con-entrada {
+  background: var(--acento-dia);
+  color: var(--acento-dia-texto);
+}
+.cal-dia.con-entrada:hover {
+  background: color-mix(in srgb, var(--acento-dia) 88%, #fff);
+}
+.cal-dia.hoy {
+  box-shadow: inset 0 0 0 2px var(--acento-claro);
+}
+.cal-dia.con-entrada.hoy {
+  box-shadow: inset 0 0 0 2px var(--acento-dia-texto);
+}
+.cal-lista {
+  position: fixed;
+  z-index: 10;
+  width: 270px;
+  padding: 4px;
+  background: var(--superficie);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px var(--sombra);
+}
+.cal-lista button {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  padding: 6px 8px;
+}
+.cal-lista button:hover {
+  background: var(--hover);
+}
+.cal-lista-hora {
+  font-size: 12px;
+  color: var(--texto-suave);
+  width: 38px;
+  flex-shrink: 0;
+}
+.cal-lista-tit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cal-lista-nueva {
+  color: var(--acento-claro) !important;
+  font-size: 13.5px;
+  border-top: 1px solid var(--linea) !important;
+  border-radius: 0 0 5px 5px !important;
+}
+/* El calendario hace su propio scroll (sin lista virtual: ver Calendario.tsx) */
+.cal-scroll {
+  overflow-y: auto;
+  overflow-anchor: none;
+}
+
+/* Día con foto (captura 1calendasr): la miniatura cubre la celda y el número va encima en blanco */
+.cal-dia.con-foto {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 0 8px rgba(0, 0, 0, 0.6);
+}
+.cal-dia.con-foto:hover {
+  filter: brightness(1.08);
+}
+
+/* « año · ‹ mes · Mes Año · mes › · año » (el centro abre el selector) */
+.cal-nav button {
+  width: 28px;
+}
+.pildora .cal-nav-fecha {
+  min-width: 128px;
+  padding: 0 8px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.pildora .cal-nav-fecha:hover {
+  background: color-mix(in srgb, var(--acento-texto) 14%, transparent);
+}
+.barra-centro {
+  position: relative;
+}
+.cal-selector {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: 260px;
+  padding: 10px;
+  background: var(--superficie);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px var(--sombra);
+  color: var(--texto);
+}
+.cal-selector-cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.cal-selector-cab button,
+.cal-selector-hueco {
+  width: 28px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: var(--texto-suave);
+}
+.cal-selector-cab button:hover {
+  background: var(--hover);
+  color: var(--texto);
+}
+.cal-selector-grilla {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+.cal-selector-grilla button {
+  height: 34px;
+  background: var(--celda);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--texto);
+  font-size: 13.5px;
+  text-transform: capitalize;
+  position: relative;
+}
+.cal-selector-grilla button:hover {
+  background: var(--celda-hover);
+}
+.cal-selector-grilla button.hoy {
+  border-color: var(--acento-claro);
+}
+.cal-selector-grilla button.sel {
+  background: var(--acento);
+  color: var(--acento-texto);
+}
+/* mes con entradas: un puntito */
+.cal-selector-grilla button.con::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: var(--acento-claro);
+}
+.cal-selector-grilla button.sel.con::after {
+  background: var(--acento-texto);
+}
+.cal-selector-hoy {
+  width: 100%;
+  margin-top: 8px;
+  height: 28px;
+  background: none;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  color: var(--texto-suave);
+}
+.cal-selector-hoy:hover {
+  background: var(--hover);
+  color: var(--texto);
+}
+
+/* Tamaño del calendario (deslizador al lado del +): ancho máximo de la grilla, centrada; el número
+   del día crece y se achica con ella (unidades del contenedor) */
+.cal-grilla,
+.cal-semana {
+  max-width: var(--cal-ancho, none);
+  margin-left: auto;
+  margin-right: auto;
+}
+.cal-grilla {
+  container-type: inline-size;
+}
+.cal-grilla .cal-dia {
+  font-size: clamp(11px, 2.3cqi, 24px);
+}
+.cal-tam {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 6px;
+  color: color-mix(in srgb, var(--acento-texto) 80%, transparent);
+}
+.cal-tam input {
+  width: 90px;
+  accent-color: var(--acento-texto);
+}
+.cal-tam input:focus {
+  outline: none;
+}
+/* "Hoy" al lado del deslizador de tamaño */
+.cal-hoy {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  margin-left: 6px;
+  padding: 0 9px;
+  background: color-mix(in srgb, var(--acento-texto) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--acento-texto) 22%, transparent);
+  border-radius: 6px;
+  color: color-mix(in srgb, var(--acento-texto) 85%, transparent);
+  font-size: 13px;
+}
+.cal-hoy:hover {
+  background: color-mix(in srgb, var(--acento-texto) 14%, transparent);
+  color: var(--acento-texto);
+}

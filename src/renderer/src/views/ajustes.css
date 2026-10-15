@@ -1,0 +1,435 @@
+.aj-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--velo);
+  display: grid;
+  place-items: center;
+}
+.aj-ventana {
+  width: min(640px, calc(100vw - 40px));
+  /* Tamaño fijo: no crece ni se achica al cambiar de pestaña (el cuerpo se desplaza) */
+  height: min(560px, calc(100vh - 60px));
+  display: flex;
+  flex-direction: column;
+  background: var(--superficie-2);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 10px;
+  box-shadow: 0 20px 60px var(--sombra);
+  overflow: hidden;
+}
+.aj-titulo {
+  position: relative;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+}
+.aj-cerrar {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 0;
+  background: #ff5f57;
+  padding: 0;
+}
+.aj-cerrar:hover {
+  filter: brightness(1.15);
+}
+.aj-pestanas {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  padding: 2px 8px 6px;
+  border-bottom: 1px solid var(--linea);
+  flex-wrap: wrap;
+}
+.aj-pestanas button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 60px;
+  padding: 4px 5px;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: var(--texto-2);
+  font-size: 11.5px;
+}
+.aj-pestanas button:hover {
+  background: var(--hover-suave);
+}
+.aj-pestanas button.sel {
+  background: var(--sel);
+  color: var(--acento-claro);
+}
+.aj-cuerpo {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 14px 18px 18px;
+}
+.aj-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 10px;
+  align-items: center;
+  font-size: 13.5px;
+}
+.aj-form > label {
+  text-align: right;
+  color: var(--texto);
+}
+.aj-form select,
+.aj-form input {
+  height: 24px;
+  padding: 0 8px;
+  background: var(--campo);
+  border: 1px solid var(--campo-borde);
+  border-radius: 5px;
+  outline: none;
+  color: var(--texto);
+}
+.aj-form select {
+  justify-self: start;
+  min-width: 190px;
+}
+.aj-form input:focus,
+.aj-form select:focus {
+  border-color: var(--acento-claro);
+}
+.aj-span {
+  grid-column: 1 / -1;
+}
+.aj-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 320px;
+  justify-self: center;
+  width: 100%;
+}
+.aj-fila {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+.aj-form h4 {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  color: var(--texto-fuerte);
+  text-align: center;
+}
+.aj-boton {
+  height: 24px;
+  padding: 0 12px;
+  background: var(--control);
+  border: 1px solid var(--control-borde);
+  border-radius: 5px;
+  color: var(--control-texto);
+  font-size: 13px;
+  justify-self: start;
+}
+.aj-boton:hover:not(:disabled) {
+  background: var(--control-hover);
+}
+.aj-boton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.aj-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.aj-botones .aj-boton {
+  width: 190px;
+}
+.aj-nota {
+  font-size: 12.5px;
+  color: var(--texto-suave);
+  line-height: 1.45;
+}
+.aj-ruta {
+  font-size: 12.5px;
+  color: var(--texto-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.aj-codigo {
+  display: block;
+  text-align: center;
+  font:
+    600 16px ui-monospace,
+    monospace;
+  background: var(--hundido);
+  border-radius: 6px;
+  padding: 8px;
+  user-select: all;
+}
+.aj-backups {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12.5px;
+  color: var(--texto-suave);
+}
+.aj-backups div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--linea-suave);
+  padding: 2px 0;
+}
+.aj-casilla {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-self: start;
+}
+.aj-form .aj-casilla input {
+  height: auto;
+}
+
+/* Clima */
+.aj-form input.aj-ciudad-campo {
+  flex: 1;
+  min-width: 0;
+  max-width: 300px;
+}
+.aj-ciudades {
+  display: flex;
+  flex-direction: column;
+  max-height: 210px;
+  overflow-y: auto;
+  padding: 4px;
+  background: var(--hundido);
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+}
+.aj-ciudades button {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 8px;
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  color: var(--texto);
+  text-align: left;
+  font-size: 13.5px;
+}
+.aj-ciudades button:hover {
+  background: var(--hover);
+}
+.aj-ciudad-extra {
+  color: var(--texto-tenue);
+  font-size: 12.5px;
+}
+
+.aj-form input.aj-numero {
+  width: 150px;
+}
+
+/* Apariencia */
+.aj-form > label.aj-arriba {
+  align-self: start;
+  padding-top: 4px;
+}
+.aj-acentos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.aj-acento-grupo .aj-nota {
+  display: block;
+  margin-bottom: 3px;
+}
+.aj-acento-fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.aj-acento {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--linea);
+  border-radius: 50%;
+}
+.aj-acento:hover,
+.aj-acento.sel {
+  outline: 2px solid var(--texto-tenue);
+  outline-offset: 2px;
+}
+/* Apariencia → skins */
+.aj-seccion {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--texto-fuerte);
+}
+.aj-skins {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.aj-skins-grupo {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+}
+.aj-skin {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  border-radius: 8px;
+  overflow: hidden;
+  background: none;
+  text-align: left;
+}
+.aj-skin:hover {
+  outline: 2px solid var(--texto-tenue);
+  outline-offset: 1px;
+}
+.aj-skin.sel {
+  border-color: var(--acento-claro);
+  outline: 2px solid var(--acento-claro);
+  outline-offset: 1px;
+}
+.aj-skin-vista {
+  position: relative;
+  height: 52px;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  grid-template-rows: 9px 1fr;
+}
+.aj-skin-barra {
+  grid-column: 1 / -1;
+}
+.aj-skin-lat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 5px 4px;
+}
+.aj-skin-lat i {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+}
+.aj-skin-dias {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 5px 6px;
+}
+.aj-skin-dias i {
+  display: block;
+  border-radius: 3px;
+}
+.aj-skin-nom {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  font-size: 11.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.aj-acento-punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.aj-form select:disabled {
+  opacity: 0.55;
+}
+
+/* Estadísticas y Acerca de (captura 8): etiqueta alineada a la derecha, valor a la izquierda */
+.aj-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 8px;
+  font-size: 13.5px;
+  align-items: center;
+}
+.aj-stats-k {
+  text-align: right;
+  font-weight: 600;
+  color: var(--texto);
+}
+.aj-stats-v {
+  color: var(--texto-2);
+  min-width: 0;
+}
+.aj-acerca {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.aj-acerca > .aj-nota,
+.aj-acerca-nombre {
+  text-align: center;
+}
+.aj-acerca-nombre {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--texto-fuerte);
+}
+.aj-acerca h4 {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  color: var(--texto-fuerte);
+  text-align: center;
+}
+.aj-boton.aj-peligro {
+  color: var(--peligro);
+}
+.aj-restablecer {
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--peligro) 45%, transparent);
+  border-radius: 8px;
+  background: var(--error-fondo);
+  max-width: 420px;
+}
+.aj-form input.aj-hora {
+  justify-self: start;
+  width: 150px;
+}
+.aj-form .aj-seccion:not(:first-child) {
+  margin-top: 10px;
+}
+.aj-deslizador input[type='range'] {
+  flex: 1;
+  max-width: 260px;
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  accent-color: var(--acento);
+}
+.aj-deslizador .aj-nota {
+  white-space: nowrap;
+  min-width: 68px;
+}
+.aj-deslizador .aj-nota:first-child {
+  text-align: right;
+}
+.aj-boton {
+  white-space: nowrap;
+  flex-shrink: 0;
+}

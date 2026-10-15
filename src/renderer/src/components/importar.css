@@ -1,0 +1,118 @@
+.imp-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  background: var(--velo);
+}
+.imp-ventana {
+  width: min(520px, calc(100vw - 40px));
+  max-height: calc(100vh - 60px);
+  overflow: auto;
+  padding: 18px 20px;
+  background: var(--superficie-2);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 10px;
+  box-shadow: 0 20px 60px var(--sombra);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.imp-ventana h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.imp-ventana p {
+  margin: 0 0 10px;
+}
+.imp-tenue {
+  color: var(--texto-tenue);
+}
+.imp-error {
+  color: var(--error-texto);
+}
+.imp-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+.imp-botones button {
+  height: 28px;
+  padding: 0 14px;
+  background: var(--control);
+  border: 1px solid var(--control-borde);
+  border-radius: 5px;
+  color: var(--control-texto);
+}
+.imp-botones button:hover:not(:disabled) {
+  background: var(--control-hover);
+}
+.imp-botones button.primario {
+  background: var(--chip);
+  border-color: color-mix(in srgb, var(--chip) 80%, #fff);
+}
+.imp-botones button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.imp-resumen {
+  margin-bottom: 10px;
+}
+.imp-ruta {
+  font-weight: 600;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.imp-grilla {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+}
+.imp-grilla span {
+  color: var(--texto-tenue);
+  text-align: right;
+}
+.imp-grilla b {
+  font-weight: 500;
+}
+.imp-avisos {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--texto-suave);
+}
+.imp-casilla {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.imp-barra {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--linea);
+  overflow: hidden;
+}
+.imp-barra span {
+  display: block;
+  height: 100%;
+  background: var(--chip);
+  transition: width 0.2s;
+}
+.imp-actual {
+  margin-top: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.imp-errores {
+  max-height: 160px;
+  overflow: auto;
+  padding: 8px;
+  background: var(--hundido);
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: var(--error-texto);
+}

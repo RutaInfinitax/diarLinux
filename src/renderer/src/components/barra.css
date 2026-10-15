@@ -1,0 +1,99 @@
+.barra {
+  flex-shrink: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--acento) 92%, #fff) 0%,
+    var(--acento) 100%
+  );
+  color: var(--acento-texto);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+/* Configuración → Apariencia → Barra superior */
+:root[data-barra='plana'] .barra {
+  background: var(--acento);
+}
+:root[data-barra='discreta'] .barra {
+  /* del color de la barra lateral, con una línea del acento; los íconos toman el acento */
+  --acento-texto: var(--texto);
+  background: var(--lateral-arriba);
+  box-shadow: inset 0 -2px 0 var(--acento-claro);
+}
+:root[data-barra='discreta'] .barra-boton {
+  color: var(--acento-claro);
+}
+.barra-fila {
+  height: var(--barra-alto);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 10px;
+}
+.barra-izq {
+  display: flex;
+  gap: 4px;
+}
+.barra-der {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.barra-centro {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.barra-boton {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: color-mix(in srgb, var(--acento-texto) 85%, transparent);
+}
+.barra-boton:hover {
+  background: color-mix(in srgb, var(--acento-texto) 14%, transparent);
+  color: var(--acento-texto);
+}
+.pildora {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  border: 1px solid color-mix(in srgb, var(--acento-texto) 22%, transparent);
+  border-radius: 6px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--acento-texto) 6%, transparent);
+}
+.pildora button {
+  height: 100%;
+  width: 32px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  color: color-mix(in srgb, var(--acento-texto) 80%, transparent);
+}
+.pildora button:hover {
+  background: color-mix(in srgb, var(--acento-texto) 14%, transparent);
+  color: var(--acento-texto);
+}
+.pildora span {
+  min-width: 62px;
+  text-align: center;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--acento-texto) 85%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--acento-texto) 18%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--acento-texto) 18%, transparent);
+  line-height: 24px;
+}
+
+.pildora .ees-dia {
+  min-width: 130px;
+  padding: 0 8px;
+  cursor: default;
+}
+.pildora .ees-dia[role='button'] {
+  cursor: pointer;
+}
