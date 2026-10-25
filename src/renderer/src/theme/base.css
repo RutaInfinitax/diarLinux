@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font: var(--fuente-tam) / 1.4 var(--fuente);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
+input,
+textarea,
+[contenteditable] {
+  user-select: text;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scroll);
+  border-radius: 5px;
+  border: 2px solid var(--fondo);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.oculto {
+  display: none !important;
+}

@@ -1,0 +1,64 @@
+.paleta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 252px;
+}
+.paleta.chica {
+  gap: 4px;
+  max-width: 310px;
+}
+/* los vivos empiezan en otra fila */
+.paleta-corte {
+  flex-basis: 100%;
+  height: 0;
+}
+.paleta-otro {
+  position: relative;
+  cursor: pointer;
+  background: conic-gradient(#e53935, #fbc02d, #43a047, #29b6f6, #5c6bc0, #ec407a, #e53935);
+  color: #fff;
+}
+.paleta-otro input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+}
+.paleta-muestra {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--linea);
+  border-radius: 50%;
+  color: var(--chip-texto);
+}
+.paleta.chica .paleta-muestra {
+  width: 20px;
+  height: 20px;
+}
+.paleta-muestra:hover,
+.paleta-muestra.sel {
+  outline: 2px solid var(--texto-tenue);
+  outline-offset: 1px;
+}
+/* que ningún estilo de menú (p. ej. ".eti-menu button") las estire */
+.paleta .paleta-muestra {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.paleta.chica .paleta-muestra {
+  width: 20px;
+  height: 20px;
+}

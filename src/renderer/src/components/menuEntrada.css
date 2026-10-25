@@ -1,0 +1,29 @@
+.menu-entrada {
+  position: fixed;
+  z-index: 45;
+  min-width: 200px;
+  padding: 4px;
+  background: var(--superficie);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px var(--sombra);
+}
+.menu-entrada button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  color: var(--texto);
+  font-size: 13.5px;
+  text-align: left;
+}
+.menu-entrada button:hover {
+  background: var(--hover);
+}
+.menu-entrada button.peligro {
+  color: var(--peligro);
+}

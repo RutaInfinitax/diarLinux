@@ -1,0 +1,100 @@
+.tarjeta {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  background: var(--tarjeta);
+  border: 0;
+  border-radius: 4px;
+  padding: 5px 5px 6px 0;
+  color: var(--texto);
+}
+.tarjeta:hover {
+  background: var(--tarjeta-hover);
+}
+.tarjeta-dia {
+  width: 62px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 14px;
+}
+.tarjeta-sem {
+  font-size: 14px;
+  color: var(--texto-suave);
+  line-height: 1.1;
+}
+.tarjeta-num {
+  font-size: 29px;
+  font-weight: 600;
+  color: var(--acento-claro);
+  line-height: 1.15;
+}
+.tarjeta-mes {
+  font-size: 11px;
+  color: var(--texto-tenue);
+  white-space: nowrap;
+}
+.tarjeta mark {
+  background: var(--marca);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+.tarjeta-cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+.tarjeta-titulo {
+  font-weight: 700;
+  font-size: 14.5px;
+  margin-bottom: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tarjeta-extracto {
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: var(--texto-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tarjeta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+  align-items: center;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  padding: 0 6px;
+  background: var(--chip);
+  color: var(--chip-texto);
+  border-radius: 3px;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.tarjeta-estrellas {
+  display: inline-flex;
+  gap: 1px;
+  color: #f5c518;
+  margin-left: 4px;
+}
+.tarjeta-foto {
+  width: 86px;
+  height: 86px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 3px;
+  align-self: center;
+  background: var(--celda);
+}

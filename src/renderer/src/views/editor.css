@@ -1,0 +1,638 @@
+.editor {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ed-barra .barra-fila {
+  grid-template-columns: 1fr auto 1fr;
+}
+.ed-fecha {
+  gap: 2px;
+}
+.ed-fecha-texto {
+  position: relative;
+  font-size: 13.5px;
+  color: color-mix(in srgb, var(--acento-texto) 92%, transparent);
+  padding: 0 6px;
+  cursor: pointer;
+}
+.ed-fecha-texto input[type='date'] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+}
+.ed-fecha-texto input[type='date']::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.ed-estado {
+  font-size: 12px;
+  color: color-mix(in srgb, var(--acento-texto) 75%, transparent);
+  align-self: center;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.barra-der {
+  position: relative;
+}
+.ed-menu {
+  position: absolute;
+  right: 0;
+  top: 34px;
+  z-index: 5;
+  min-width: 190px;
+  padding: 4px;
+  background: var(--superficie);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px var(--sombra);
+}
+.ed-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  padding: 6px 10px;
+  color: var(--texto);
+  font-size: 13.5px;
+}
+.ed-menu button:hover {
+  background: var(--hover);
+  color: var(--peligro);
+}
+.ed-menu-titulo {
+  padding: 6px 10px 2px;
+  font-size: 11.5px;
+  color: var(--texto-tenue);
+}
+.ed-menu button.ed-menu-sub {
+  padding-left: 18px;
+}
+.ed-menu-linea {
+  height: 1px;
+  margin: 4px 6px;
+  background: var(--linea);
+}
+.ed-herramientas {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  height: 30px;
+  padding: 0 8px 3px;
+}
+.ed-herramientas i {
+  width: 1px;
+  height: 16px;
+  background: color-mix(in srgb, var(--acento-texto) 25%, transparent);
+  margin: 0 5px;
+}
+.ed-herramientas button {
+  width: 28px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  color: color-mix(in srgb, var(--acento-texto) 82%, transparent);
+}
+.ed-herramientas button:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--acento-texto) 14%, transparent);
+  color: var(--acento-texto);
+}
+.ed-herramientas button.on {
+  background: color-mix(in srgb, var(--acento-texto) 22%, transparent);
+  color: var(--acento-texto);
+}
+.ed-herramientas button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.ed-hoja {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 12px 18px 8px;
+  display: flex;
+  flex-direction: column;
+  cursor: text;
+}
+/* Columna de texto centrada; su ancho máximo lo elige el deslizador ⇤⇥ de la barra */
+.ed-centro {
+  width: 100%;
+  margin: 0 auto;
+}
+.ed-hoja > .ed-centro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* el cuerpo ocupa todo el alto: se puede hacer clic en cualquier parte para escribir */
+.ed-contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.ed-contenido > .ed-cuerpo {
+  flex: 1;
+}
+.ed-titulo {
+  font-family: var(--fuente-texto);
+  background: none;
+  border: 0;
+  outline: none;
+  color: var(--texto);
+  font-size: calc(var(--texto-tam) + 1.5px);
+  font-weight: 700;
+  padding: 0 0 4px;
+}
+.ed-titulo::placeholder {
+  color: var(--texto-placeholder);
+  font-weight: 600;
+}
+.ed-cuerpo {
+  outline: none;
+  min-height: 140px;
+  font-size: var(--texto-tam);
+  font-family: var(--fuente-texto);
+  line-height: 1.45;
+  user-select: text;
+}
+.ed-cuerpo p {
+  margin: 0 0 2px;
+}
+.ed-cuerpo h2 {
+  font-size: 1.25em;
+  margin: 10px 0 4px;
+}
+.ed-cuerpo h3 {
+  font-size: 1.1em;
+  margin: 8px 0 4px;
+}
+.ed-cuerpo ul,
+.ed-cuerpo ol {
+  padding-left: 28px;
+  margin: 4px 0;
+}
+.ed-cuerpo blockquote {
+  border-left: 3px solid var(--acento-claro);
+  margin: 6px 0;
+  padding: 2px 0 2px 12px;
+  color: var(--texto-2);
+}
+.ed-cuerpo a {
+  color: var(--enlace);
+  text-decoration: underline;
+}
+.ed-cuerpo ul[data-type='taskList'] {
+  list-style: none;
+  padding-left: 4px;
+}
+.ed-cuerpo ul[data-type='taskList'] li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.ed-cuerpo ul[data-type='taskList'] li > label {
+  margin-top: 2px;
+}
+.ed-cuerpo ul[data-type='taskList'] li > div {
+  flex: 1;
+}
+.ed-cuerpo p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--texto-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.ed-cuerpo:focus {
+  outline: none;
+}
+.tiptap {
+  outline: none;
+}
+
+.ed-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+.chip-x {
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  color: inherit;
+  opacity: 0.75;
+  padding: 0 0 0 2px;
+}
+.chip-x:hover {
+  opacity: 1;
+}
+/* chip de la entrada: clic → cambiar su color (para todas las entradas) */
+.ed-chip {
+  position: relative;
+  cursor: pointer;
+}
+.ed-chip-color {
+  position: absolute;
+  left: 0;
+  bottom: 26px;
+  z-index: 6;
+  padding: 8px;
+  background: var(--superficie);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px var(--sombra);
+  cursor: default;
+  color: var(--texto);
+}
+.ed-chip-color .ed-panel-titulo {
+  display: block;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+.ed-nueva-etiqueta {
+  position: relative;
+}
+.ed-nueva-etiqueta input {
+  height: 22px;
+  width: 150px;
+  padding: 0 6px;
+  font-size: 12.5px;
+  background: var(--campo);
+  border: 1px solid var(--acento-claro);
+  border-radius: 3px;
+  outline: none;
+}
+.ed-panel {
+  position: absolute;
+  left: 0;
+  bottom: 28px;
+  z-index: 5;
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  background: var(--superficie);
+  border: 1px solid var(--superficie-borde);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px var(--sombra);
+}
+.ed-panel-titulo {
+  font-size: 12px;
+  color: var(--texto-tenue);
+}
+.ed-panel-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.ed-panel-lista .chip {
+  border: 0;
+  height: 24px;
+  padding: 0 8px;
+  font-size: 13px;
+}
+.ed-panel-lista .chip:hover {
+  filter: brightness(1.15);
+}
+.ed-panel-crear {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ed-panel-lista + .ed-panel-crear {
+  border-top: 1px solid var(--linea);
+  padding-top: 8px;
+}
+.ed-panel-boton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  padding: 4px 6px;
+  color: var(--texto-suave);
+  font-size: 12.5px;
+  text-align: left;
+}
+.ed-panel-boton:hover {
+  background: var(--hover);
+  color: var(--texto);
+}
+.ed-panel-nota {
+  font-size: 12.5px;
+  color: var(--texto-tenue);
+}
+.ed-dato,
+.ed-escrita {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--texto-suave);
+}
+.ed-menu button.neutro:hover {
+  color: var(--texto);
+}
+.ed-estrellas {
+  display: flex;
+  gap: 2px;
+  color: #f5c518;
+}
+.ed-estrellas button {
+  background: none;
+  border: 0;
+  padding: 1px;
+  color: inherit;
+  display: grid;
+}
+
+.ed-acciones {
+  position: relative;
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid var(--linea-suave);
+  padding: 3px 4px 4px;
+}
+.ed-acciones button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 0;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: var(--texto-suave);
+  font-size: 12px;
+  white-space: nowrap;
+  min-width: 0;
+}
+.ed-acciones button:hover:not(:disabled) {
+  background: var(--hover-suave);
+  color: var(--texto-fuerte);
+}
+.ed-acciones button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Fotos de la entrada (tira horizontal como en la captura) */
+.editor {
+  position: relative;
+}
+.editor.arrastrando::after {
+  content: 'Suelta las fotos para agregarlas';
+  position: absolute;
+  inset: 8px;
+  z-index: 20;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  color: var(--texto-fuerte);
+  border: 2px dashed var(--acento-claro);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--acento-claro) 18%, transparent);
+}
+.ed-fotos {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.ed-foto {
+  position: relative;
+  flex-shrink: 0;
+}
+.ed-foto img {
+  display: block;
+  height: var(--adj-tam, 96px);
+  width: auto;
+  max-width: calc(var(--adj-tam, 96px) * 2);
+  object-fit: cover;
+  border-radius: 3px;
+  cursor: zoom-in;
+  background: var(--celda);
+}
+.ed-foto-x {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  display: none;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+.ed-foto:hover .ed-foto-x {
+  display: grid;
+}
+.ed-foto-x:hover {
+  background: #c0392b;
+}
+
+/* "Agregar audio" abre un menú: grabar o elegir un archivo */
+.ed-accion-menu {
+  position: relative;
+  display: flex;
+}
+.ed-accion-menu > button {
+  flex: 1;
+}
+.ed-menu-audio {
+  left: 50%;
+  top: auto;
+  bottom: calc(100% + 4px);
+  transform: translateX(-50%);
+  min-width: 230px;
+}
+.ed-menu-audio button {
+  font-size: 13.5px;
+  padding: 7px 10px;
+}
+.ed-acciones .ed-menu-audio button {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 100%;
+  color: var(--texto);
+  border-radius: 4px;
+}
+
+/* Contador de palabras: chico, en la esquina de abajo a la derecha de la hoja */
+.ed-contador {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 2px 12px 3px;
+  border-radius: 14px;
+  background: var(--fondo-translucido);
+  border: 1px solid var(--linea);
+  font-size: 13px;
+  color: var(--texto-suave);
+  font-variant-numeric: tabular-nums;
+  pointer-events: auto;
+}
+/* el número, grande: se lee de lejos */
+.ed-contador-num {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--texto);
+}
+.ed-contador.logrado .ed-contador-num {
+  color: inherit;
+}
+.ed-contador > svg {
+  align-self: center;
+}
+.ed-contador-barra {
+  align-self: center;
+  width: 56px;
+  height: 5px;
+  border-radius: 2px;
+  background: var(--linea);
+  overflow: hidden;
+}
+.ed-contador-barra > span {
+  display: block;
+  height: 100%;
+  background: var(--chip);
+}
+.ed-contador.logrado {
+  color: var(--logrado-texto);
+  border-color: #4a6b4f;
+}
+.ed-contador.logrado .ed-contador-barra > span {
+  background: #4a6b4f;
+}
+
+/* ── Pie de la entrada: adjuntos + datos, compacto, al nivel del contador ── */
+.ed-pie {
+  flex-shrink: 0;
+  /* sin recorte: el panel de etiquetas/personas se abre hacia arriba, por encima de la hoja */
+  position: relative;
+  z-index: 3;
+  padding: 6px 18px 4px;
+  border-top: 1px solid var(--linea-suave);
+}
+.ed-pie > .ed-centro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ed-pie-adjuntos {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 0;
+}
+.ed-pie-adjuntos .ed-fotos {
+  flex: 1;
+  min-width: 0;
+}
+.ed-pie-fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  min-height: 22px;
+}
+.ed-tam-adj,
+.ed-ancho {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  color: var(--texto-tenue);
+  cursor: default;
+}
+.ed-tam-adj input {
+  width: 70px;
+  accent-color: var(--acento);
+}
+.ed-ancho {
+  color: color-mix(in srgb, var(--acento-texto) 80%, transparent);
+  padding-left: 4px;
+}
+.ed-ancho input {
+  width: 90px;
+  accent-color: var(--acento-texto);
+}
+.ed-sin-guardar {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.ed-sin-guardar:hover {
+  text-decoration: underline;
+}
+.ed-menu-plantillas {
+  min-width: 200px;
+  max-height: 260px;
+  overflow-y: auto;
+  left: auto;
+  right: 0;
+  transform: none;
+}
+.ed-acciones .ed-menu-plantillas button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ed-menu-vacio {
+  display: block;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  color: var(--texto-tenue);
+  white-space: normal;
+}
+.ed-ancho input:focus,
+.ed-tam-adj input:focus {
+  outline: none;
+}
+
+/* Contador de palabras y tamaño de adjuntos: fijos en la esquina derecha del pie, aunque el texto
+   esté centrado y más angosto (deslizador ⇤⇥) */
+.ed-pie-fijos {
+  position: absolute;
+  right: 14px;
+  bottom: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.ed-pie-fijos .ed-contador {
+  margin-left: 0;
+}
+/* el contador grande no debe tapar el final del texto: el pie crece hasta su altura */
+.ed-pie.con-contador {
+  min-height: 52px;
+}

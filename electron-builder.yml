@@ -1,0 +1,52 @@
+# Empaquetado SOLO para Linux: AppImage y paquete pacman.
+# Uso: source scripts/entorno.sh && npm run build:linux   → dist/
+appId: io.github.diarlinux
+productName: diarLinux
+executableName: diarlinux
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**
+  - package.json
+  # el ícono de la ventana, la bandeja y los avisos (sin esto la bandeja mostraba un ícono genérico)
+  - resources/**
+  - '!**/*.map'
+asarUnpack:
+  - resources/**
+extraResources: []
+linux:
+  target:
+    - AppImage
+    - pacman
+  executableName: diarlinux
+  category: Office # electron-builder admite una sola (pisa Categories de abajo)
+  # Wayland nativo si la sesión es Wayland (X11 si no). El flag solo sirve al lanzar (ver src/main/index.ts).
+  executableArgs:
+    - --ozone-platform-hint=auto
+  # el ícono en todos los tamaños estándar (con uno solo, KDE podía mostrar «?» en la barra de tareas)
+  icon: build/icons
+  synopsis: Encrypted personal journal
+  description: Encrypted personal journal (SQLCipher + AES-GCM), inspired by Diarium. English and Spanish.
+  maintainer: RutaInfinitax
+  desktop:
+    entry:
+      Name: diarLinux
+      GenericName: Personal journal
+      GenericName[es]: Diario personal
+      Comment: Encrypted personal journal
+      Comment[es]: Diario personal cifrado
+      Keywords: journal;diary;notes;encrypted;diario;notas;cifrado;
+      StartupWMClass: diarLinux
+appImage:
+  artifactName: ${productName}-${version}.${ext}
+pacman:
+  artifactName: ${productName}-${version}.${ext}
+  # licencia MIT (LICENSE en el código)
+  depends:
+    - gtk3
+    - nss
+    - alsa-lib
+    - libnotify
+npmRebuild: false
+publish: null

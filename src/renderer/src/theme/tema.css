@@ -1,0 +1,121 @@
+/* Tema de diarLinux (clon visual de Diarium). Todo con variables: el acento se cambia en un solo lugar. */
+:root {
+  --acento: #2f6fdb; /* barra superior, chips, días con entrada */
+  --acento-claro: #3d8ef0; /* íconos de la barra lateral, número grande del día */
+  --acento-texto: #ffffff;
+  /* Chips de etiquetas/personas e insignias: tonos apagados (el acento brillante cansa la vista) */
+  --chip: #3b5b82;
+  --chip-texto: #e8ecf1;
+  --fondo: #2b2b2b; /* área de contenido */
+  --fondo-encabezado: #2b2b2b;
+  --celda: #3b3b3b; /* días del calendario y tarjetas */
+  --celda-hover: #444444;
+  --tarjeta: #383838;
+  --lateral: #3a3a3c; /* barra lateral */
+  --lateral-sel: rgba(255, 255, 255, 0.13);
+  --texto: #e8e8e8;
+  --texto-suave: #a8a8a8;
+  --texto-tenue: #8a8a8a;
+  --borde: #4a4a4a;
+  --peligro: #ff6b6b;
+  --exito: #4cc38a;
+  --radio: 6px;
+  --lateral-ancho: 175px;
+  --barra-alto: 44px;
+  --fuente: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fuente-tam: 15px;
+  /* texto de las entradas (Configuración → General → fuente y tamaño) */
+  --fuente-texto: var(--fuente);
+  --texto-tam: 15.5px;
+  --acento-dia: var(--acento-claro);
+  --acento-dia-texto: #ffffff;
+  /* superficies, controles y detalles (tema oscuro) */
+  --superficie: #3a3a3c; /* menús y paneles flotantes */
+  --superficie-2: #343436; /* ventanas (Configuración, diálogos) */
+  --superficie-borde: #555555;
+  --sombra: rgba(0, 0, 0, 0.5);
+  --velo: rgba(0, 0, 0, 0.4);
+  --hover: rgba(255, 255, 255, 0.08);
+  --hover-suave: rgba(255, 255, 255, 0.05);
+  --sel: rgba(255, 255, 255, 0.1);
+  --control: #5a5a5c;
+  --control-hover: #66666a;
+  --control-borde: #6a6a6c;
+  --control-texto: #f0f0f0;
+  --campo: #3a3a3a;
+  --campo-borde: #616163;
+  --hundido: #2b2b2d;
+  --linea: #4a4a4a;
+  --linea-suave: #3a3a3a;
+  --texto-fuerte: #ffffff;
+  --texto-2: #dcdcdc;
+  --texto-placeholder: #6d6d6d;
+  --encabezado: #c8c8c8;
+  --enlace: #6aa8ff;
+  --error-texto: #f0a5a5;
+  --error-fondo: rgba(255, 107, 107, 0.12);
+  --tarjeta-hover: #3f3f3f;
+  --celda-vacia: #333333;
+  --celda-borde-hover: rgba(255, 255, 255, 0.75);
+  --marca: rgba(214, 178, 72, 0.32);
+  --logrado-texto: #9cc7a8;
+  --fondo-translucido: rgba(43, 43, 43, 0.92);
+  --lateral-arriba: #3e3e40;
+  --lateral-medio: #39393b;
+  --lateral-abajo: #343437;
+  --lateral-borde: #262626;
+  --scroll: #555555;
+  color-scheme: dark;
+}
+
+/* Tema claro */
+:root[data-tema='claro'] {
+  --chip-texto: #f4f6f9;
+  --fondo: #f4f4f6;
+  --fondo-encabezado: #f4f4f6;
+  --celda: #e3e3e7;
+  --celda-hover: #d9d9de;
+  --tarjeta: #ffffff;
+  --lateral-sel: rgba(0, 0, 0, 0.08);
+  --texto: #1e1e20;
+  --texto-suave: #55555a;
+  --texto-tenue: #77777d;
+  --borde: #d0d0d4;
+  --peligro: #c62828;
+  --superficie: #ffffff;
+  --superficie-2: #f7f7f9;
+  --superficie-borde: #cfcfd4;
+  --sombra: rgba(0, 0, 0, 0.18);
+  --velo: rgba(0, 0, 0, 0.25);
+  --hover: rgba(0, 0, 0, 0.06);
+  --hover-suave: rgba(0, 0, 0, 0.04);
+  --sel: rgba(0, 0, 0, 0.08);
+  --control: #e9e9ec;
+  --control-hover: #dedee3;
+  --control-borde: #c4c4ca;
+  --control-texto: #1e1e20;
+  --campo: #ffffff;
+  --campo-borde: #c4c4ca;
+  --hundido: #ececef;
+  --linea: #d6d6da;
+  --linea-suave: #e4e4e8;
+  --texto-fuerte: #111113;
+  --texto-2: #333336;
+  --texto-placeholder: #9a9aa0;
+  --encabezado: #55555a;
+  --enlace: #1a5fc4;
+  --error-texto: #b3261e;
+  --error-fondo: rgba(200, 40, 40, 0.08);
+  --tarjeta-hover: #ececef;
+  --celda-vacia: #ebebee;
+  --celda-borde-hover: rgba(0, 0, 0, 0.45);
+  --marca: rgba(255, 200, 0, 0.38);
+  --logrado-texto: #2e6b3f;
+  --fondo-translucido: rgba(244, 244, 246, 0.94);
+  --lateral-arriba: #ededf0;
+  --lateral-medio: #e8e8eb;
+  --lateral-abajo: #e2e2e6;
+  --lateral-borde: #cfcfd4;
+  --scroll: #c0c0c6;
+  color-scheme: light;
+}
